@@ -6,17 +6,17 @@ import Rating from "./components/Rating/Rating";
 function App() {
     return (
         <div>
-            <AppTitle />
+            <PageTitle title={'This is App component'} />
             <Rating />
-            <Accordion />
+            <Accordion title={'Menu'} />
             <Rating />
         </div>
     );
 }
 
-function AppTitle() {
+function PageTitle({title}: { title: string }) {
     return (
-        <>This is App component</>
+        <h1>{title}</h1>
     )
 }
 

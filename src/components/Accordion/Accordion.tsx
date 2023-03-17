@@ -1,15 +1,15 @@
-export default function Accordion() {
+export default function Accordion({title}: { title: string }) {
     return (
         <div>
-            <AccordionTitle />
+            <AccordionTitle title={title} />
             <AccordionBody />
         </div>
     )
 }
 
-function AccordionTitle() {
+function AccordionTitle({title}: { title: string }) {
     return (
-        <h3>Menu</h3>
+        <h3>{title}</h3>
     )
 }
 

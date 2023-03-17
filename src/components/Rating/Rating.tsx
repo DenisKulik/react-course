@@ -1,17 +1,17 @@
 export default function Rating() {
     return (
         <div>
-            <Star />
-            <Star />
-            <Star />
-            <Star />
-            <Star />
+            <Star selected={true} />
+            <Star selected={true} />
+            <Star selected={true} />
+            <Star selected={false} />
+            <Star selected={false} />
         </div>
     )
 }
 
-function Star() {
+function Star({selected}: { selected: boolean }) {
     return (
-        <span>star </span>
+        <span>{selected ? <b>star </b> : 'star '}</span>
     )
 }
