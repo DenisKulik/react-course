@@ -1,8 +1,17 @@
-export default function Accordion({title}: { title: string }) {
+type AccordionPropsType = {
+    title: string,
+    collapsed: boolean,
+}
+
+export default function Accordion({title, collapsed}: AccordionPropsType) {
     return (
         <div>
-            <AccordionTitle title={title} />
-            <AccordionBody />
+            {collapsed ? <AccordionTitle title={title} /> :
+                <>
+                    <AccordionTitle title={title} />
+                    <AccordionBody />
+                </>
+            }
         </div>
     )
 }

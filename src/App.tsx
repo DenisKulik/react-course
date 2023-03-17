@@ -8,7 +8,7 @@ function App() {
         <div>
             <PageTitle title={'This is App component'} />
             <Rating />
-            <Accordion title={'Menu'} />
+            <Accordion title={'Menu'} collapsed={false} />
             <Rating />
         </div>
     );
