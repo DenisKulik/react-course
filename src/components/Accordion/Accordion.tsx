@@ -1,25 +1,21 @@
 type AccordionPropsType = {
     title: string,
-    collapsed: boolean,
+    collapsed?: boolean,
 }
 
-export default function Accordion({title, collapsed}: AccordionPropsType) {
+export default function Accordion({ title, collapsed }: AccordionPropsType) {
     return (
         <div>
-            {collapsed ? <AccordionTitle title={title} /> :
-                <>
-                    <AccordionTitle title={title} />
-                    <AccordionBody />
-                </>
-            }
+            <AccordionTitle title={ title } />
+            { collapsed && <AccordionBody /> }
         </div>
-    )
+    );
 }
 
-function AccordionTitle({title}: { title: string }) {
+function AccordionTitle({ title }: { title: string }) {
     return (
-        <h3>{title}</h3>
-    )
+        <h3>{ title }</h3>
+    );
 }
 
 function AccordionBody() {
@@ -29,5 +25,5 @@ function AccordionBody() {
             <li>2</li>
             <li>3</li>
         </ul>
-    )
+    );
 }
