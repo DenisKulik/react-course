@@ -1,16 +1,22 @@
+import { useState } from 'react';
 import styles from './Switch.module.scss';
 
-type SwitchType = {
-    status: boolean
-}
+export default function Switch() {
+    const [ status, setStatus ] = useState(false);
 
-export default function Switch({ status }: SwitchType) {
+    const switchOn = () => setStatus(true);
+    const switchOff = () => setStatus(false);
+
     return (
-        <div className={ `${ styles.Switch }` }>
-            <button className={ `${ styles.btn } ${ status && styles.on }` }>
+        <div className={ `${ styles.switch }` }>
+            <button onClick={ switchOn }
+                    className={ `${ styles.btn } ${ status ? styles.on :
+                                                    '' }` }>
                 On
             </button>
-            <button className={ `${ styles.btn } ${ !status && styles.off }` }>
+            <button onClick={ switchOff }
+                    className={ `${ styles.btn } ${ !status ? styles.off :
+                                                    '' }` }>
                 Off
             </button>
             <div

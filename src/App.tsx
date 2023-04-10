@@ -9,10 +9,8 @@ function App() {
         <div className="App">
             <PageTitle title={ 'This is App component' } />
             <Rating value={ 4 } />
-            <Accordion title={ 'Menu' } collapsed={ true } />
-            <Accordion title={ 'Users' } collapsed={ false } />
-            <Switch status={ true } />
-            <Switch status={ false } />
+            <Accordion title={ 'Menu' } collapsed={ false } />
+            <Switch />
         </div>
     );
 }
