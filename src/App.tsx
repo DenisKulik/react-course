@@ -8,7 +8,7 @@ function App() {
     return (
         <div className="App">
             <PageTitle title={ 'This is App component' } />
-            <Rating value={ 4 } />
+            <Rating />
             <Accordion title={ 'Menu' } />
             <Switch />
         </div>
