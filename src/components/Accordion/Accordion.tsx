@@ -1,12 +1,21 @@
+import styles from './Accordion.module.scss';
+import { useState } from 'react';
+
 type AccordionPropsType = {
     title: string,
-    collapsed?: boolean,
 }
 
-export default function Accordion({ title, collapsed }: AccordionPropsType) {
+export default function Accordion({ title }: AccordionPropsType) {
+    const [ collapsed, setCollapsed ] = useState(true);
+
+    const toggleCollapse = () => setCollapsed(!collapsed);
+
     return (
-        <div>
+        <div className={ styles.accordion }>
             <AccordionTitle title={ title } />
+            <button onClick={ toggleCollapse } className={ styles.btn }>
+                Toggle
+            </button>
             { collapsed && <AccordionBody /> }
         </div>
     );
