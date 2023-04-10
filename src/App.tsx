@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Accordion from './components/Accordion/Accordion';
 import Rating from './components/Rating/Rating';
 import Switch from './components/Switch/Switch';

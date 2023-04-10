@@ -1,0 +1,30 @@
+.Switch {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+
+  .btn {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ababab;
+  }
+
+  .switchStatus {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid rgb(0, 0, 0);
+    background-color: #ababab;
+  }
+
+  .on {
+    background-color: green;
+  }
+
+  .off {
+    background-color: red;
+  }
+}
