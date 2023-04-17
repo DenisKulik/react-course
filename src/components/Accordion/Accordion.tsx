@@ -1,19 +1,20 @@
-import { useState } from 'react';
 import styles from './Accordion.module.scss';
 
 type AccordionPropsType = {
-    title: string,
+    title: string
+    accordionCollapsed: boolean
+    setAccordionCollapsed: (collapsed: boolean) => void
 }
 
-export default function Accordion({ title }: AccordionPropsType) {
-    const [ collapsed, setCollapsed ] = useState(true);
+export default function Accordion(props: AccordionPropsType) {
+    const { title, accordionCollapsed, setAccordionCollapsed } = props;
 
-    const toggleCollapse = () => setCollapsed(!collapsed);
+    const toggleCollapse = () => setAccordionCollapsed(!accordionCollapsed);
 
     return (
         <div className={ styles.accordion }>
             <AccordionTitle title={ title } toggleCollapse={ toggleCollapse } />
-            { collapsed && <AccordionBody /> }
+            { accordionCollapsed && <AccordionBody /> }
         </div>
     );
 }
