@@ -3,18 +3,16 @@ import styles from './Accordion.module.scss';
 type AccordionPropsType = {
     title: string
     accordionCollapsed: boolean
-    setAccordionCollapsed: (collapsed: boolean) => void
+    toggleCollapse: () => void
 }
 
 export default function Accordion(props: AccordionPropsType) {
-    const { title, accordionCollapsed, setAccordionCollapsed } = props;
-
-    const toggleCollapse = () => setAccordionCollapsed(!accordionCollapsed);
+    const { title, accordionCollapsed, toggleCollapse } = props;
 
     return (
         <div className={ styles.accordion }>
             <AccordionTitle title={ title } toggleCollapse={ toggleCollapse } />
-            { accordionCollapsed && <AccordionBody /> }
+            { !accordionCollapsed && <AccordionBody /> }
         </div>
     );
 }
