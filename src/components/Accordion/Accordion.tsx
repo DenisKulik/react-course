@@ -1,5 +1,5 @@
-import styles from './Accordion.module.scss';
 import { useState } from 'react';
+import styles from './Accordion.module.scss';
 
 type AccordionPropsType = {
     title: string,
@@ -12,18 +12,20 @@ export default function Accordion({ title }: AccordionPropsType) {
 
     return (
         <div className={ styles.accordion }>
-            <AccordionTitle title={ title } />
-            <button onClick={ toggleCollapse } className={ styles.btn }>
-                Toggle
-            </button>
+            <AccordionTitle title={ title } toggleCollapse={ toggleCollapse } />
             { collapsed && <AccordionBody /> }
         </div>
     );
 }
 
-function AccordionTitle({ title }: { title: string }) {
+type AccordionTitlePropsType = {
+    title: string
+    toggleCollapse: () => void
+}
+
+function AccordionTitle({ title, toggleCollapse }: AccordionTitlePropsType) {
     return (
-        <h3>{ title }</h3>
+        <h3 className={ styles.title } onClick={ toggleCollapse }>{ title }</h3>
     );
 }
 

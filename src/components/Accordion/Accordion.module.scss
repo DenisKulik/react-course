@@ -1,12 +1,9 @@
 .accordion {
   margin-bottom: 10px;
 
-  .btn {
-    padding: 5px 10px;
+  .title {
     text-transform: uppercase;
     cursor: pointer;
-    background-color: lightsteelblue;
-    border: none;
-    border-radius: 10px;
+    user-select: none;
   }
 }
