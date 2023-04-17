@@ -1,9 +1,11 @@
-import { useState } from 'react';
 import styles from './Switch.module.scss';
 
-export default function Switch() {
-    const [ status, setStatus ] = useState(false);
+type SwitchPropsType = {
+    status: boolean
+    setStatus: (status: boolean) => void
+}
 
+export default function Switch({ status, setStatus }: SwitchPropsType) {
     const switchOn = () => setStatus(true);
     const switchOff = () => setStatus(false);
 
@@ -16,12 +18,10 @@ export default function Switch() {
             </button>
             <button onClick={ switchOff }
                     className={ `${ styles.btn } ${ !status ? styles.off :
-                                                    '' }` }>
-                Off
+                                                    '' }` }>Off
             </button>
-            <div
-                className={ `${ styles.switchStatus } ${ status ? styles.on :
-                                                         styles.off }` }></div>
+            <div className={ `${ styles.switchStatus } ${ status ? styles.on :
+                                                          styles.off }` }></div>
         </div>
     );
 }

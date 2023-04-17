@@ -7,6 +7,7 @@ import Switch from './components/Switch/Switch';
 function App() {
     const [ ratingValue, setRatingValue ] = useState<RatingValueType>(0);
     const [ accordionCollapsed, setAccordionCollapsed ] = useState(true);
+    const [ switchStatus, setSwitchStatus ] = useState(false);
 
     return (
         <div className="App">
@@ -16,7 +17,7 @@ function App() {
             <Accordion title={ 'Menu' }
                        accordionCollapsed={ accordionCollapsed }
                        setAccordionCollapsed={ setAccordionCollapsed } />
-            <Switch />
+            <Switch status={ switchStatus } setStatus={ setSwitchStatus } />
         </div>
     );
 }
