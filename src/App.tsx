@@ -14,9 +14,8 @@ function App() {
     return (
         <div className="App">
             <PageTitle title={'This is App component'} />
-            <Rating ratingValue={ratingValue}
-                    setRatingValue={setRatingValue} />
-            <Accordion title={'Menu'}
+            <Rating ratingValue={ratingValue} setRatingValue={setRatingValue} />
+            <Accordion title={'Technologies'}
                        accordionCollapsed={accordionCollapsed}
                        toggleCollapse={toggleCollapse} />
             <Switch status={switchStatus} setStatus={setSwitchStatus} />
