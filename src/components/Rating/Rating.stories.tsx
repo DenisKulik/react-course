@@ -10,18 +10,18 @@ export default meta;
 
 type Story = StoryObj<typeof Rating>;
 
-const ControlledRating = () => {
+const RatingWithHook = () => {
     const [ ratingValue, setRatingValue ] = useState<RatingValueType>(0);
     return <Rating ratingValue={ratingValue} setRatingValue={setRatingValue} />;
 };
 
-export const uncontrolledRating: Story = {
+export const UncontrolledRating: Story = {
     args: {
         ratingValue: 0,
         setRatingValue: x => x
     },
 };
 
-export const controlledRating: Story = {
-    render: () => <ControlledRating />
+export const ControlledRating: Story = {
+    render: () => <RatingWithHook />
 };
