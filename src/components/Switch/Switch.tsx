@@ -10,18 +10,17 @@ export default function Switch({ status, setStatus }: SwitchPropsType) {
     const switchOff = () => setStatus(false);
 
     return (
-        <div className={ `${ styles.switch }` }>
-            <button onClick={ switchOn }
-                    className={ `${ styles.btn } ${ status ? styles.on :
-                                                    '' }` }>
+        <div className={`${styles.switch}`}>
+            <button onClick={switchOn}
+                    className={`${styles.btn} ${status ? styles.on : ''}`}>
                 On
             </button>
-            <button onClick={ switchOff }
-                    className={ `${ styles.btn } ${ !status ? styles.off :
-                                                    '' }` }>Off
+            <button onClick={switchOff}
+                    className={`${styles.btn} ${!status ? styles.off : ''}`}>
+                Off
             </button>
-            <div className={ `${ styles.switchStatus } ${ status ? styles.on :
-                                                          styles.off }` }></div>
+            <div className={`${styles.switchStatus} ${
+                status ? styles.on : styles.off}`}></div>
         </div>
     );
 }
