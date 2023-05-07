@@ -13,20 +13,20 @@ function App() {
 
     return (
         <div className="App">
-            <PageTitle title={ 'This is App component' } />
-            <Rating ratingValue={ ratingValue }
-                    setRatingValue={ setRatingValue } />
-            <Accordion title={ 'Menu' }
-                       accordionCollapsed={ accordionCollapsed }
-                       toggleCollapse={ toggleCollapse } />
-            <Switch status={ switchStatus } setStatus={ setSwitchStatus } />
+            <PageTitle title={'This is App component'} />
+            <Rating ratingValue={ratingValue}
+                    setRatingValue={setRatingValue} />
+            <Accordion title={'Menu'}
+                       accordionCollapsed={accordionCollapsed}
+                       toggleCollapse={toggleCollapse} />
+            <Switch status={switchStatus} setStatus={setSwitchStatus} />
         </div>
     );
 }
 
 function PageTitle({ title }: { title: string }) {
     return (
-        <h1>{ title }</h1>
+        <h1>{title}</h1>
     );
 }
 
