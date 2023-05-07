@@ -15,7 +15,7 @@ const AccordionWithHook = () => {
     const [ accordionCollapsed, setAccordionCollapsed ] = useState(false);
     const toggleCollapse = () => setAccordionCollapsed(!accordionCollapsed);
     return <Accordion
-        title={'Technologies'}
+        title="Technologies"
         accordionCollapsed={accordionCollapsed}
         toggleCollapse={toggleCollapse}
     />;
