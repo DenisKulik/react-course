@@ -12,6 +12,9 @@ permissions:
   id-token: write
   deployments: write
 
+env:
+  BUILD_DIR: storybook-static
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -43,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: 'storybook-static'
+          path: ${{ env.BUILD_DIR }}
 
       - name: Deploy to GitHub Pages
         id: deployment
