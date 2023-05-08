@@ -33,9 +33,7 @@ export const UncontrolledAccordion: Story = {
 };
 
 export const ControlledAccordion: Story = {
-    render: (args) => <AccordionWithHook
-        title={args.title}
-        accordionCollapsed={args.accordionCollapsed} />,
+    render: (args) => <AccordionWithHook {...args} />,
     args: {
         title: 'Technologies',
         accordionCollapsed: false,
