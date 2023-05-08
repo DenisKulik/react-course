@@ -6,6 +6,11 @@ import Accordion from './Accordion';
 const meta: Meta<typeof Accordion> = {
     title: 'Components/Accordion',
     component: Accordion,
+    argTypes: {
+        color: {
+            control: 'color'
+        }
+    },
 };
 export default meta;
 
@@ -17,11 +22,13 @@ const AccordionWithHook = ({ title, accordionCollapsed }: {
     const [ collapsed, setCollapsed ] = useState(accordionCollapsed);
     useEffect(() => setCollapsed(accordionCollapsed), [ accordionCollapsed ]);
     const toggleCollapse = () => setCollapsed(!collapsed);
-    return <Accordion
-        title={title}
-        accordionCollapsed={collapsed}
-        toggleCollapse={toggleCollapse}
-    />;
+    return (
+        <Accordion
+            title={title}
+            accordionCollapsed={collapsed}
+            toggleCollapse={toggleCollapse}
+        />
+    );
 };
 
 export const UncontrolledAccordion: Story = {
