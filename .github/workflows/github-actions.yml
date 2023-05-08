@@ -35,7 +35,7 @@ jobs:
         run: yarn
 
       - name: Build
-        run: storybook build
+        run: yarn build-storybook
 
       - name: Setup Pages
         uses: actions/configure-pages@v2
