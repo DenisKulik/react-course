@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Rating, { RatingValueType } from './Rating';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
 const meta: Meta<typeof Rating> = {
@@ -11,9 +11,14 @@ export default meta;
 
 type Story = StoryObj<typeof Rating>;
 
-const RatingWithHook = () => {
-    const [ ratingValue, setRatingValue ] = useState<RatingValueType>(0);
-    return <Rating ratingValue={ratingValue} setRatingValue={setRatingValue} />;
+const RatingWithHook = ({ ratingValue }: { ratingValue: RatingValueType }) => {
+    const [ value, setValue ] = useState<RatingValueType>(ratingValue);
+
+    useEffect(() => {
+        setValue(ratingValue);
+    }, [ ratingValue ]);
+
+    return <Rating ratingValue={value} setRatingValue={setValue} />;
 };
 
 export const UncontrolledRating: Story = {
@@ -24,5 +29,8 @@ export const UncontrolledRating: Story = {
 };
 
 export const ControlledRating: Story = {
-    render: () => <RatingWithHook />
+    render: (args) => <RatingWithHook ratingValue={args.ratingValue} />,
+    args: {
+        ratingValue: 0,
+    },
 };
