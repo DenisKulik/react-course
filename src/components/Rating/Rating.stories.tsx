@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
 const meta: Meta<typeof Rating> = {
-    title: 'Rating',
+    title: 'Components/Rating',
     component: Rating,
 };
 export default meta;

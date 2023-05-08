@@ -4,7 +4,7 @@ import Switch from './Switch';
 import { action } from '@storybook/addon-actions';
 
 const meta: Meta<typeof Switch> = {
-    title: 'Switch',
+    title: 'Components/Switch',
     component: Switch,
 };
 export default meta;
