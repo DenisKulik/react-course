@@ -11,12 +11,14 @@ export default meta;
 
 type Story = StoryObj<typeof Accordion>;
 
-const AccordionWithHook = () => {
-    const [ accordionCollapsed, setAccordionCollapsed ] = useState(false);
-    const toggleCollapse = () => setAccordionCollapsed(!accordionCollapsed);
+const AccordionWithHook = ({ title }: {
+    title: string,
+}) => {
+    const [ collapsed, setCollapsed ] = useState(false);
+    const toggleCollapse = () => setCollapsed(!collapsed);
     return <Accordion
-        title="Technologies"
-        accordionCollapsed={accordionCollapsed}
+        title={title}
+        accordionCollapsed={collapsed}
         toggleCollapse={toggleCollapse}
     />;
 };
@@ -30,5 +32,8 @@ export const UncontrolledAccordion: Story = {
 };
 
 export const ControlledAccordion: Story = {
-    render: () => <AccordionWithHook />
+    render: (args) => <AccordionWithHook title={args.title} />,
+    args: {
+        title: 'Technologies',
+    },
 };
