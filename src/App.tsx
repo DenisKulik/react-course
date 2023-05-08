@@ -15,9 +15,13 @@ function App() {
         <div className="App">
             <PageTitle title={'This is App component'} />
             <Rating ratingValue={ratingValue} setRatingValue={setRatingValue} />
-            <Accordion title={'Technologies'}
-                       accordionCollapsed={accordionCollapsed}
-                       toggleCollapse={toggleCollapse} />
+            <Accordion
+                title={'Technologies'}
+                items={[]}
+                onClick={() => alert('some item was clicked')}
+                accordionCollapsed={accordionCollapsed}
+                toggleCollapse={toggleCollapse}
+            />
             <Switch status={switchStatus} setStatus={setSwitchStatus} />
         </div>
     );

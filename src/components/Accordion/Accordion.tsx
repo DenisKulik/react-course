@@ -1,6 +1,11 @@
 import styles from './Accordion.module.scss';
 
-type AccordionPropsType = {
+export type ItemType = {
+    title: string
+    value: any
+}
+
+export type AccordionPropsType = {
     title: string
     /**
      * Optional color of header text
@@ -8,10 +13,19 @@ type AccordionPropsType = {
     color?: string
     accordionCollapsed: boolean
     toggleCollapse: () => void
+    items: ItemType[]
+    onClick: (value: any) => void
 }
 
-export default function Accordion(props: AccordionPropsType) {
-    const { title, accordionCollapsed, toggleCollapse, ...otherProps } = props;
+const Accordion = (props: AccordionPropsType) => {
+    const {
+        title,
+        items,
+        onClick,
+        accordionCollapsed,
+        toggleCollapse,
+        ...otherProps
+    } = props;
 
     return (
         <div className={styles.accordion}>
@@ -20,10 +34,11 @@ export default function Accordion(props: AccordionPropsType) {
                 toggleCollapse={toggleCollapse}
                 {...otherProps}
             />
-            {!accordionCollapsed && <AccordionBody />}
+            {!accordionCollapsed &&
+                <AccordionBody items={items} onClick={onClick} />}
         </div>
     );
-}
+};
 
 type AccordionTitlePropsType = {
     title: string
@@ -31,7 +46,7 @@ type AccordionTitlePropsType = {
     toggleCollapse: () => void
 }
 
-function AccordionTitle(props: AccordionTitlePropsType) {
+const AccordionTitle = (props: AccordionTitlePropsType) => {
     const { title, toggleCollapse, ...otherProps } = props;
 
     return (
@@ -41,21 +56,22 @@ function AccordionTitle(props: AccordionTitlePropsType) {
             onClick={toggleCollapse}>{title}
         </h3>
     );
+};
+
+type AccordionBodyPropsType = {
+    items: ItemType[]
+    onClick: (value: any) => void
 }
 
-function AccordionBody() {
+const AccordionBody = (props: AccordionBodyPropsType) => {
+    const { items, onClick } = props;
+    const itemsList = items.map((item, idx) => (
+        <li key={idx} onClick={() => onClick(item.value)}>{item.title}</li>
+    ));
+
     return (
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>React</li>
-            <li>Vue.js</li>
-            <li>Angular</li>
-            <li>Bootstrap</li>
-            <li>SASS</li>
-            <li>Webpack</li>
-            <li>Babel</li>
-        </ul>
+        <ul>{itemsList} </ul>
     );
-}
+};
+
+export default Accordion;
