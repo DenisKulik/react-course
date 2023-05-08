@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import Accordion from './Accordion';
 
@@ -11,10 +11,15 @@ export default meta;
 
 type Story = StoryObj<typeof Accordion>;
 
-const AccordionWithHook = ({ title }: {
-    title: string,
+const AccordionWithHook = ({ title, accordionCollapsed }: {
+    title: string, accordionCollapsed: boolean
 }) => {
-    const [ collapsed, setCollapsed ] = useState(false);
+    const [ collapsed, setCollapsed ] = useState(accordionCollapsed);
+
+    useEffect(() => {
+        setCollapsed(accordionCollapsed);
+    }, [ accordionCollapsed ]);
+
     const toggleCollapse = () => setCollapsed(!collapsed);
     return <Accordion
         title={title}
@@ -32,8 +37,11 @@ export const UncontrolledAccordion: Story = {
 };
 
 export const ControlledAccordion: Story = {
-    render: (args) => <AccordionWithHook title={args.title} />,
+    render: (args) => <AccordionWithHook
+        title={args.title}
+        accordionCollapsed={args.accordionCollapsed} />,
     args: {
         title: 'Technologies',
+        accordionCollapsed: false,
     },
 };
