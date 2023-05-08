@@ -1,3 +1,5 @@
+import styles from './Rating.module.scss';
+
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5;
 
 type RatingPropsType = {
@@ -31,7 +33,7 @@ type StarPropsType = {
 
 function Star({ selected, setRatingValue }: StarPropsType) {
     return (
-        <span onClick={setRatingValue}>
+        <span className={styles.star} onClick={setRatingValue}>
             {selected ? <b>star </b> : 'star '}
         </span>
     );
