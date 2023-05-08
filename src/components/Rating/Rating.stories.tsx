@@ -13,11 +13,7 @@ type Story = StoryObj<typeof Rating>;
 
 const RatingWithHook = ({ ratingValue }: { ratingValue: RatingValueType }) => {
     const [ value, setValue ] = useState<RatingValueType>(ratingValue);
-
-    useEffect(() => {
-        setValue(ratingValue);
-    }, [ ratingValue ]);
-
+    useEffect(() => setValue(ratingValue), [ ratingValue ]);
     return <Rating ratingValue={value} setRatingValue={setValue} />;
 };
 

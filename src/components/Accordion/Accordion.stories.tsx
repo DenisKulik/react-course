@@ -15,11 +15,7 @@ const AccordionWithHook = ({ title, accordionCollapsed }: {
     title: string, accordionCollapsed: boolean
 }) => {
     const [ collapsed, setCollapsed ] = useState(accordionCollapsed);
-
-    useEffect(() => {
-        setCollapsed(accordionCollapsed);
-    }, [ accordionCollapsed ]);
-
+    useEffect(() => setCollapsed(accordionCollapsed), [ accordionCollapsed ]);
     const toggleCollapse = () => setCollapsed(!collapsed);
     return <Accordion
         title={title}
