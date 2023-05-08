@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Switch from './Switch';
 import { action } from '@storybook/addon-actions';
 
@@ -11,8 +11,9 @@ export default meta;
 
 type Story = StoryObj<typeof Switch>;
 
-const SwitchWithHook = () => {
-    const [ switchStatus, setSwitchStatus ] = useState(false);
+const SwitchWithHook = ({ status }: { status: boolean }) => {
+    const [ switchStatus, setSwitchStatus ] = useState(status);
+    useEffect(() => setSwitchStatus(status), [ status ]);
     return <Switch status={switchStatus} setStatus={setSwitchStatus} />;
 };
 
@@ -24,5 +25,8 @@ export const UncontrolledSwitch: Story = {
 };
 
 export const ControlledSwitch: Story = {
-    render: () => <SwitchWithHook />
+    render: (args) => <SwitchWithHook status={args.status} />,
+    args: {
+        status: true,
+    }
 };
