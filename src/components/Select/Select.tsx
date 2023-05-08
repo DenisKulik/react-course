@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 export type ItemType = {
     title: string
     value: any
@@ -11,15 +13,23 @@ export type SelectPropsType = {
 
 const Select = (props: SelectPropsType) => {
     const { value, items, onChange } = props;
-    // localState
+    const [ opened, setOpened ] = useState<boolean>(false);
 
-    const itemsList = items.map(item => <div>{item.title}</div>);
+    const onOpenedHandler = () => setOpened(true);
+    const changeValueHandler = (value: any) => {
+        onChange(value);
+        setOpened(false);
+    };
+
+    const itemsList = items.map((item, idx) => (
+        <div key={idx} onClick={() => changeValueHandler(item.value)}>
+            {item.title}
+        </div>));
 
     return (
         <div>
-            <div onClick={onChange}>{value}</div>
-            {/*if clicked - unwrap*/}
-            {itemsList}
+            <div onClick={onOpenedHandler}>{value}</div>
+            {opened && itemsList}
         </div>
     );
 };
