@@ -4,16 +4,16 @@ type CHANGE_HOVERED_ITEM_TYPE = 'CHANGE-HOVERED-ITEM'
 export const TOGGLE_ACTIVE: TOGGLE_ACTIVE_TYPE = 'TOGGLE-ACTIVE';
 export const CHANGE_HOVERED_ITEM: CHANGE_HOVERED_ITEM_TYPE = 'CHANGE-HOVERED-ITEM';
 
-type ToggleActionType = {
+export type ToggleActionType = {
     type: TOGGLE_ACTIVE_TYPE
 }
 
-type ChangeHoveredItemActionType = {
+export type ChangeHoveredItemActionType = {
     type: CHANGE_HOVERED_ITEM_TYPE
     nextValue: any
 }
 
-type StateType = {
+export type StateType = {
     active: boolean
     hoveredItemValue: any
 }
