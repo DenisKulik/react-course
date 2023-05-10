@@ -1,5 +1,6 @@
-import { KeyboardEvent, useEffect, useState } from 'react';
+import { KeyboardEvent, useEffect, useReducer } from 'react';
 import styles from './Select.module.scss';
+import reducer, { CHANGE_HOVERED_ITEM, TOGGLE_ACTIVE } from './reducer';
 
 export type ItemType = {
     title: string
@@ -14,27 +15,29 @@ export type SelectPropsType = {
 
 const Select = (props: SelectPropsType) => {
     const { value, items, onChangeValue } = props;
-    const [ active, setActive ] = useState<boolean>(false);
-    const [ hoveredItemValue, setHoveredItemValue ] = useState(value);
+    const [ state, dispatch ] = useReducer(reducer,
+        { active: false, hoveredItemValue: value });
 
-    useEffect(() => setHoveredItemValue(value), [ value ]);
+    useEffect(() => {
+        dispatch({ type: CHANGE_HOVERED_ITEM, nextValue: value });
+    }, [ value ]);
 
-    const toggleItemsHandler = () => setActive(!active);
+    const toggleItemsHandler = () => dispatch({ type: TOGGLE_ACTIVE });
     const onKeyUpHandler = (e: KeyboardEvent<HTMLDivElement>) => {
         if (e.key === 'Escape' || e.key === 'Enter') {
-            setActive(false);
+            dispatch({ type: TOGGLE_ACTIVE });
             return;
         }
 
         if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-            if (!hoveredItemValue) {
+            if (!state.hoveredItemValue) {
                 e.key === 'ArrowDown' ? onChangeValue(items[0].value) :
                 onChangeValue(items[items.length - 1].value);
                 return;
             }
 
             for (let i = 0; i < items.length; i += 1) {
-                if (hoveredItemValue === items[i].value) {
+                if (state.hoveredItemValue === items[i].value) {
                     e.key === 'ArrowDown' ?
                     items[i + 1] && onChangeValue(items[i + 1].value) :
                     items[i - 1] && onChangeValue(items[i - 1].value);
@@ -54,8 +57,9 @@ const Select = (props: SelectPropsType) => {
         <div
             key={idx}
             className={`${styles.item} ${
-                hoveredItemValue === item.value ? styles.selected : ''}`}
-            onMouseEnter={() => setHoveredItemValue(item.value)}
+                state.hoveredItemValue === item.value ? styles.selected : ''}`}
+            onMouseEnter={() => dispatch(
+                { type: CHANGE_HOVERED_ITEM, nextValue: item.value })}
             onClick={() => onClickItemHandler(item.value)}>
             {item.title}
         </div>));
@@ -65,7 +69,7 @@ const Select = (props: SelectPropsType) => {
              tabIndex={0}
              onKeyUp={onKeyUpHandler}>
             <span onClick={toggleItemsHandler}>{selectedItem?.title}</span>
-            {active && (
+            {state.active && (
                 <div className={styles.items}>
                     {itemsList}
                 </div>
