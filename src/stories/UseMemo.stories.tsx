@@ -8,7 +8,7 @@ export const DifficultCounting = () => {
     const [ a, setA ] = useState<number>(5);
     const [ b, setB ] = useState<number>(5);
 
-    let resultA = 1;
+    let resultA;
     let resultB = 1;
 
     resultA = useMemo(() => {
