@@ -1,7 +1,8 @@
-# React Project for the React Course
+# React course
 
-This project was bootstrapped
-with [Create React App](https://github.com/facebook/create-react-app).
+![CI](https://github.com/DenisKulik/react-course/actions/workflows/github-actions.yml/badge.svg)
+
+[Demo](https://deniskulik.github.io/react-course)
 
 ## Available Scripts
 
