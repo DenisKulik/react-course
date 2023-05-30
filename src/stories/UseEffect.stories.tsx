@@ -25,3 +25,32 @@ export const ExampleOne = () => {
         </>
     );
 };
+
+export const SetTimeoutExample = () => {
+    const [ count, setCount ] = useState(1);
+
+    useEffect(() => {
+        setTimeout(() => document.title = count.toString(), 1000);
+    }, [ count ]);
+
+    return (
+        <>
+            <button onClick={() => setCount(count + 1)}>+</button>
+            {count}
+        </>
+    );
+};
+
+export const SetIntervalExample = () => {
+    const [ count, setCount ] = useState(1);
+
+    useEffect(() => {
+        setInterval(() => setCount((state) => state + 1), 1000);
+    }, []);
+
+    return (
+        <>
+            {count}
+        </>
+    );
+};
