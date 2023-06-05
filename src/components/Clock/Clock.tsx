@@ -7,9 +7,13 @@ const Clock = () => {
         setInterval(() => setDate(new Date()), 1000);
     }, []);
 
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const seconds = date.getSeconds().toString().padStart(2, '0');
+    const getTwoDigitsString = (num: number): string => {
+        return num.toString().padStart(2, '0');
+    };
+
+    const hours = getTwoDigitsString(date.getHours());
+    const minutes = getTwoDigitsString(date.getMinutes());
+    const seconds = getTwoDigitsString(date.getSeconds());
 
     const stringTime = `${hours}:${minutes}:${seconds}`;
 
