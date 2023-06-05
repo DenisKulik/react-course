@@ -4,7 +4,8 @@ const Clock = () => {
     const [ date, setDate ] = useState(new Date());
 
     useEffect(() => {
-        setInterval(() => setDate(new Date()), 1000);
+        const timerId = setInterval(() => setDate(new Date()), 1000);
+        return () => clearInterval(timerId);
     }, []);
 
     const getTwoDigitsString = (num: number): string => {
