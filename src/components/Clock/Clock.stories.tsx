@@ -9,4 +9,14 @@ export default meta;
 
 type Story = StoryObj<typeof Clock>;
 
-export const SimpleClock: Story = {};
+export const digitalClock: Story = {
+    args: {
+        mode: 'digital'
+    },
+};
+
+export const analogClock: Story = {
+    args: {
+        mode: 'analog'
+    },
+};

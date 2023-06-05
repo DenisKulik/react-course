@@ -1,26 +1,54 @@
 import { useEffect, useState } from 'react';
+import styles from './Clock.module.scss';
 
-const Clock = () => {
+type ClockPropsType = {
+    mode: 'digital' | 'analog'
+}
+
+const Clock = ({ mode }: ClockPropsType) => {
     const [ date, setDate ] = useState(new Date());
 
     useEffect(() => {
-        const timerId = setInterval(() => setDate(new Date()), 1000);
-        return () => clearInterval(timerId);
+        const intervalId = setInterval(() => setDate(new Date()), 1000);
+        return () => clearInterval(intervalId);
     }, []);
 
     const getTwoDigitsString = (num: number): string => {
         return num.toString().padStart(2, '0');
     };
 
-    const hours = getTwoDigitsString(date.getHours());
-    const minutes = getTwoDigitsString(date.getMinutes());
-    const seconds = getTwoDigitsString(date.getSeconds());
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
 
-    const stringTime = `${hours}:${minutes}:${seconds}`;
+    const hoursString = getTwoDigitsString(hours);
+    const minutesString = getTwoDigitsString(minutes);
+    const secondsString = getTwoDigitsString(seconds);
+
+    const hourAngle = ((hours % 12) + minutes / 60) * 30;
+    const minAngle = (minutes + seconds / 60) * 6;
+    const secAngle = seconds * 6;
+
+    const stringTime = `${hoursString}:${minutesString}:${secondsString}`;
 
     return (
         <div>
-            {stringTime}
+            {
+                mode === 'digital' ?
+                <div>{stringTime}</div> :
+                <div className={styles.analogClock}>
+                    <div className={`${styles.hand} ${styles.hour}`}
+                         style={{ transform: `rotateZ(${hourAngle}deg)` }}
+                    />
+                    <div className={`${styles.hand} ${styles.minute}`}
+                         style={{ transform: `rotateZ(${minAngle}deg)` }}
+                    />
+                    <div className={`${styles.hand} ${styles.second}`}
+                         style={{ transform: `rotateZ(${secAngle}deg)` }}
+                    />
+                </div>
+            }
+
         </div>
     );
 };

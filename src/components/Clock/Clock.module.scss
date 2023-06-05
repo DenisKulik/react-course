@@ -1,0 +1,41 @@
+.analogClock {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin-bottom: 0.5rem;
+  background-color: white;
+  border-radius: 50%;
+  border: black 1px solid;
+}
+
+.hand {
+  position: absolute;
+  border-radius: 2.5px;
+  transform-origin: center calc(100% - 5px);
+  transition: all 0.2s linear;
+
+  &.hour {
+    height: 30px;
+    top: 25px;
+    left: calc(50% - 2.5px);
+    width: 5px;
+    background-color: black;
+  }
+
+  &.minute {
+    width: 5px;
+    height: 45px;
+    top: 10px;
+    left: calc(50% - 2.5px);
+    background-color: #666;
+  }
+
+  &.second {
+    height: 50px;
+    top: 5px;
+    left: calc(50% - 2.5px);
+    width: 1px;
+    background-color: #f00;
+    transition: all 0.2s linear;
+  }
+}
