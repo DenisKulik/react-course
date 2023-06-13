@@ -71,3 +71,21 @@ export const ResetEffectExample = () => {
         </>
     );
 };
+
+export const KeysTrackerExample = () => {
+    const [ text, setText ] = useState('');
+
+    useEffect(() => {
+        const clickHandler = (e: KeyboardEvent) => setText(e.key);
+        window.addEventListener('keyup', clickHandler);
+        return () => {
+            window.removeEventListener('keyup', clickHandler);
+        };
+    }, []);
+
+    return (
+        <>
+            Typed text: {text}
+        </>
+    );
+};
