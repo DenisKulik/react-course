@@ -1,0 +1,43 @@
+.analogClockView {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  border-radius: 50%;
+  border: solid 2px #000;
+  background: #2c2c2c;
+
+  &::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #fff;
+  }
+}
+
+.hand {
+  position: absolute;
+  left: 50%;
+  width: 75px;
+  height: 75px;
+  transform-origin: bottom left;
+
+  &.hour {
+    width: 51px;
+    height: 51px;
+    top: 22.5px;
+    border-left: solid 3px #fff;
+  }
+
+  &.minute {
+    border-left: solid 2px dodgerblue;
+  }
+
+  &.second {
+    border-left: solid 1px red;
+  }
+}
