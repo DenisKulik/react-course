@@ -54,3 +54,20 @@ export const SetIntervalExample = () => {
         </>
     );
 };
+
+export const ResetEffectExample = () => {
+    const [ count, setCount ] = useState(1);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => setCount((state) => state + 1),
+            1000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
+    return (
+        <>
+            {count}
+        </>
+    );
+};
